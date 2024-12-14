@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+    <style>
+        html, body {
+            min-height: 100%;
+            padding: 0;
+            margin: 0;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: seagreen;
+        }
+        h1 {
+            margin: 0 0 20px;
+            font-weight: 400;
+            color: seagreen;
+        }
+        label {
+            margin: 0 0 0px;
+            font-weight: 50;
+            color: red;
+            font-size: 12px;
+        }
+        p {
+            margin: 0 0 5px;
+        }
+        .main-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 75vh;
+            background-image: url("static/img/background image.jpg");
+            background-size: cover; /* Resize the background image to cover the entire container */
+        }
+        form {
+            padding: 25px;
+            margin: 25px;
+            width: 50%;
+            box-shadow: 0 2px 5px #f5f5f5;
+            background: #f5f5f5;
+            border: 2px solid seagreen;
+            border-radius: 8px;
+        }
+        input, textarea {
+            width: calc(100% - 18px);
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 2px solid seagreen;
+            border-radius: 4px;
+            outline: none;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #666;
+        }
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: seagreen;
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+        }
+        button:hover {
+            background: green;
+        }
+        @media screen and (max-width: 600px) {
+            .main-block {
+                flex-direction: row;
+            }
+        }
+        .left-part, form {
+            width: 100%;
+        }
+        .result {
+            margin-top: 20px;
+            width: 100%;
+            border: 3px solid seagreen;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px #f5f5f5;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-block">
+        <div class="left-part">
+        </div>
+        <form action="{{ url_for('predict')}}" method="post">
+            <section>
+                <center><h1><b>Diabetes Prediction</b></h1></center>
+                <div class="info">
+                    <p><b>Please Enter the text for prediction:</b></p><br>
+                    <label for="input_text">Input Text:</label>
+                    <textarea name="input_text" placeholder="Enter the text here" required></textarea>
+                </div>
+                <center><button type="submit">Predict</button></center>
+                <div class="result">
+                    <h2>Result</h2>
+                    <p>{{result}}</p>
+                </div>
+            </section>
+        </form>
+        <footer>
+            <p><i>Developed By Group 2</i></p>
+        </footer>
+    </div>
+</body>
+</html>
